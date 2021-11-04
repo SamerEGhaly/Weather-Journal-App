@@ -31,13 +31,13 @@ const server = app.listen(port, function(){
 app.get("/get", function(req, res){
     console.log("GET message");
     console.log(projectData);
-    res.send(projectData);
+    res.send(projectData); // respond with the endpoint object
 });
 
 app.post("/add", function(req, res){
     console.log("POST message");
-    const data = req.body;
-    projectData["temperature"] = data["temperature"];
+    const data = req.body; // the body of the client post request
+    projectData["temperature"] = data["temperature"];   // update the endpoint object using received data
     projectData["date"] = data["date"];
     projectData["user response"] = data["user response"];
     console.log(projectData);

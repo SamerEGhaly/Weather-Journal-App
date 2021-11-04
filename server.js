@@ -28,16 +28,17 @@ const server = app.listen(port, function(){
     console.log(`Server Running on local host: ${port}`);
 });
 
-app.get("/", function(req, res){
+app.get("/get", function(req, res){
     console.log("GET message");
     console.log(projectData);
     res.send(projectData);
 });
 
-app.post("/", function(req, res){
+app.post("/add", function(req, res){
     console.log("POST message");
-    const data = req.body.json();
+    const data = req.body;
     projectData["temperature"] = data["temperature"];
     projectData["date"] = data["date"];
     projectData["user response"] = data["user response"];
+    console.log(projectData);
 });

@@ -1,7 +1,7 @@
 //const { json } = require("stream/consumers");
 
 /* Global Variables */
-const apiKey = ",us&appid=6e17373dacbbe7e9393c4a937ee7664b";
+const apiKey = ",us&appid=6e17373dacbbe7e9393c4a937ee7664b&units=metric";
 const baseURL = "http://api.openweathermap.org/data/2.5/weather?zip=";
 // Create a new date instance dynamically with JS
 let date = new Date();
@@ -14,8 +14,8 @@ async function getWeather(){ // fetch weather data from weather api using zip co
         const response = await fetch(baseURL+zipCode+apiKey)
         try{
             let res = await response.json();
-            let tempF = res.main.temp + " F"; // extract temperature from fetched weather data
-            let newDate = date.getDate()+'.'+ date.getMonth()+'.'+ date.getFullYear(); // get current date
+            let tempF = res.main.temp + " " + String.fromCharCode(176) + "C"; // extract temperature from fetched weather data
+            let newDate = (date.getMonth() + 1) + "." + date.getDate() + "." + date.getFullYear(); // get current date
             let userInput = document.querySelector("#feelings").value; // get user's input from the text box
             let data = {temperature: tempF, date: newDate, "user response": userInput}; // create the java object to hold our data
             return data;

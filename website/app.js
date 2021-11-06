@@ -45,9 +45,9 @@ async function updateUI(){ // get data from server and update html document
     
     try{
         let res = await response.json()
-        document.querySelector("#date").textContent = res["date"];
-        document.querySelector("#temp").textContent = res["temperature"];
-        document.querySelector("#content").textContent = res["user response"];
+        document.querySelector("#date").innerHTML = res["date"];
+        document.querySelector("#temp").innerHTML = res["temperature"];
+        document.querySelector("#content").innerHTML = res["user response"];
     }
     catch(error){
         console.log("Error", error);
